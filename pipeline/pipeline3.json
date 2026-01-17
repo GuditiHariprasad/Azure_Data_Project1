@@ -61,6 +61,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"file_name": {
+				"type": "string",
+				"defaultValue": "SalesData.csv"
+			}
+		},
 		"annotations": []
 	}
 }
