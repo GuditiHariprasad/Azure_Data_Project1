@@ -1,0 +1,40 @@
+{
+	"name": "DelimitedText9",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "output"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "address",
+				"type": "String"
+			},
+			{
+				"name": "emp_count",
+				"type": "String"
+			},
+			{
+				"name": "total_salary",
+				"type": "String"
+			},
+			{
+				"name": "max_salary",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

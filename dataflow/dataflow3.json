@@ -1,0 +1,61 @@
+{
+	"name": "dataflow3",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText8",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText9",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "unpivot1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as string,",
+				"          dept as string,",
+				"          india as string,",
+				"          usa as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 unpivot(output(",
+				"          country as string,",
+				"          emp_count as string",
+				"     ),",
+				"     ungroupBy(id,",
+				"          dept),",
+				"     lateral: true,",
+				"     ignoreNullPivots: false,",
+				"     partitionBy('hash', 1)) ~> unpivot1",
+				"unpivot1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          address as string,",
+				"          emp_count as string,",
+				"          total_salary as string,",
+				"          max_salary as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"name": "guditiharishdatafactory1",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f6520f39-44eb-49d2-a3d4-4e88aba54f31",
+		"tenantId": "22071285-1f41-48a7-89f7-085ffc1633b6"
+	}
+}
